@@ -5,6 +5,7 @@ const { authRouter } = require("./routes/auth.route.js");
 const { hotelsRouter } = require("./routes/hotels.route.js");
 const { roomsRouter } = require("./routes/rooms.route.js");
 const { usersRouter } = require("./routes/users.route.js");
+var cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 });
 
 // * Middlewares
+app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/api/hotels", hotelsRouter);
