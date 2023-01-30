@@ -2,62 +2,29 @@ const express = require("express");
 const hotelsRouter = express.Router();
 //? ALL IMPORTS
 const { HotelModel } = require("../models/Hotel.models");
-const { UNSAFE_NavigationContext } = require("react-router-dom");
+const {
+  createHotel,
+  updateHotel,
+  deleteHotel,
+  getHotels,
+  getHotel,
+} = require("../controllers/hotelController");
 
-//* CREATE HOTEL
-hotelsRouter.post("/", async (req, res, next) => {
-  const newHotel = new HotelModel(req.body);
-  try {
-    const savedHotel = await newHotel.save();
-    res.status(200).json(savedHotel);
-  } catch (error) {
-    next(error);
-  }
-});
+//* CREATE HOTEL CONTROLLER
+hotelsRouter.post("/", createHotel);
 
-// *UPDATE HOTEL
-hotelsRouter.put("/:id", async (req, res, next) => {
-  try {
-    const updatedHotel = await HotelModel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    res.status(200).json(updatedHotel);
-  } catch (error) {
-    next(error);
-  }
-});
-// * DELETE HOTEL
+// *UPDATE HOTEL CONTROLLER
+hotelsRouter.put("/:id", updateHotel);
 
-hotelsRouter.delete("/:id", async (req, res, next) => {
-  try {
-    await HotelModel.findByIdAndDelete(req.params.id);
-    res.status(200).json("Hotel has been deleted");
-  } catch (error) {
-    next(error);
-  }
-});
-//* GET PARTICULAR HOTEL
-hotelsRouter.get("/:id", async (req, res, next) => {
-  try {
-    const hotel = await HotelModel.findById(req.params.id);
-    res.status(200).json(hotel);
-  } catch (error) {
-    next(error);
-  }
-});
-// * GET ALL HOTEL
-hotelsRouter.get("/", async (req, res, next) => {
-  try {
-    const hotels = await HotelModel.find();
-    res.status(200).json(hotels);
-  } catch (error) {
-    next(error);
-  }
-});
+// * DELETE HOTEL CONTROLLER
+hotelsRouter.delete("/:id", deleteHotel);
+
+//* GET PARTICULAR HOTEL CONTROLLER
+hotelsRouter.get("/:id", getHotel);
+
+// * GET ALL HOTEL CONTROLLER
+hotelsRouter.get("/", getHotels);
+
 module.exports = {
   hotelsRouter,
 };

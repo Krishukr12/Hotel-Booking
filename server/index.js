@@ -12,19 +12,24 @@ app.get("/", (req, res) => {
   res.send("Hi ! Krishu");
 });
 
-//? Middlewares
+// * Middlewares
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/api/hotels", hotelsRouter);
 app.use("/rooms", roomsRouter);
 app.use("/users", usersRouter);
 
-
-// ? Specifin middleware to handle error
+// * Specific middleware to handle error
 app.use((err, req, res, next) => {
-  res.status(500).json("something went wrong");
+  const errStatus = err.status || 500;
+  const errMessage = err.message || "something went wrong";
+  res.status(errStatus).json({
+    success: false,
+    status: errStatus,
+    message: errMessage,
+    stack: err.stack,
+  });
 });
-
 
 app.listen(process.env.PORT, async () => {
   try {
