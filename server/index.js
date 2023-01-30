@@ -13,10 +13,18 @@ app.get("/", (req, res) => {
 });
 
 //? Middlewares
+app.use(express.json());
 app.use("/auth", authRouter);
-app.use("/hotels", hotelsRouter);
+app.use("/api/hotels", hotelsRouter);
 app.use("/rooms", roomsRouter);
 app.use("/users", usersRouter);
+
+
+// ? Specifin middleware to handle error
+app.use((err, req, res, next) => {
+  res.status(500).json("something went wrong");
+});
+
 
 app.listen(process.env.PORT, async () => {
   try {
