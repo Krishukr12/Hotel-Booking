@@ -1,7 +1,7 @@
 const express = require("express");
 const hotelsRouter = express.Router();
 //? ALL IMPORTS
-const { HotelModel } = require("../models/Hotel.models");
+
 const {
   createHotel,
   updateHotel,
