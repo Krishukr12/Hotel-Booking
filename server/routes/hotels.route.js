@@ -9,15 +9,15 @@ const {
   getHotels,
   getHotel,
 } = require("../controllers/hotelController");
-
+const verifyAdmin = require("../middlewares/verifyAdmin.js");
 //* CREATE HOTEL CONTROLLER
-hotelsRouter.post("/create", createHotel);
+hotelsRouter.post("/create", verifyAdmin, createHotel);
 
 // *UPDATE HOTEL CONTROLLER
-hotelsRouter.put("/:id", updateHotel);
+hotelsRouter.put("/:id", verifyAdmin, updateHotel);
 
 // * DELETE HOTEL CONTROLLER
-hotelsRouter.delete("/:id", deleteHotel);
+hotelsRouter.delete("/:id", verifyAdmin, deleteHotel);
 
 //* GET PARTICULAR HOTEL CONTROLLER
 hotelsRouter.get("/:id", getHotel);
