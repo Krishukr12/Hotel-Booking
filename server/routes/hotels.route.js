@@ -11,7 +11,7 @@ const {
 } = require("../controllers/hotelController");
 
 //* CREATE HOTEL CONTROLLER
-hotelsRouter.post("/", createHotel);
+hotelsRouter.post("/create", createHotel);
 
 // *UPDATE HOTEL CONTROLLER
 hotelsRouter.put("/:id", updateHotel);

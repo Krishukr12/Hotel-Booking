@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
-app.use("/api/hotels", hotelsRouter);
+app.use("/hotels", hotelsRouter);
 app.use("/rooms", roomsRouter);
 app.use("/users", usersRouter);
 
