@@ -5,9 +5,9 @@ const { authRouter } = require("./routes/auth.route.js");
 const { hotelsRouter } = require("./routes/hotels.route.js");
 const { roomsRouter } = require("./routes/rooms.route.js");
 const { usersRouter } = require("./routes/users.route.js");
-const { verifyUser } = require("./middlewares/verifyUser.js");
-const { verifyToken } = require("./middlewares/verfifyToken.js");
-const { verifyAdmin } = require("./middlewares/verifyAdmin.js");
+// const { verifyUser } = require("./middlewares/verifyUser.js");
+// const { verifyToken } = require("./middlewares/verfifyToken.js");
+// const { verifyAdmin } = require("./middlewares/verifyAdmin.js");
 var cookieParser = require("cookie-parser");
 require("dotenv").config();
 
