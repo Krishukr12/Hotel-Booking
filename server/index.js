@@ -19,15 +19,15 @@ app.get("/", (req, res) => {
 
 // Testing authentication and autherization middleware
 
-app.get("/token", verifyToken, (req, res) => {
-  res.send("Token is available");
-});
-app.get("/userverify/:id", verifyUser, (req, res) => {
-  res.send("You are a user");
-});
-app.get("/admin/:id", verifyAdmin, (req, res) => {
-  res.send("you are a admin");
-});
+// app.get("/token", verifyToken, (req, res) => {
+//   res.send("Token is available");
+// });
+// app.get("/userverify/:id", verifyUser, (req, res) => {
+//   res.send("You are a user");
+// });
+// app.get("/admin/:id", verifyAdmin, (req, res) => {
+//   res.send("you are a admin");
+// });
 // * Middlewares
 
 app.use(express.json());
