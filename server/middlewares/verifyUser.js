@@ -5,9 +5,7 @@ const verifyUser = (req, res, next) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       next();
     } else {
-      if (err) {
-        return next(createError(401, "Token is not valid !"));
-      }
+      return next(createError(401, "You are not authorized !"));
     }
   });
 };

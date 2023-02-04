@@ -12,7 +12,7 @@ var cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
-app.use(cookieParser());
+
 app.get("/", (req, res) => {
   res.send("Hi ! Krishu");
 });
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 //   res.send("you are a admin");
 // });
 // * Middlewares
-
+app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/hotels", hotelsRouter);
