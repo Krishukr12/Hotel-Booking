@@ -1,10 +1,28 @@
 const express = require("express");
 
 const roomsRouter = express.Router();
+const {
+  createRoom,
+  updateRoom,
+  deleteRoom,
+  getRoom,
+  getRooms,
+} = require("../controllers/roomController.js");
+const { verifyAdmin } = require("../middlewares/verifyAdmin.js");
+//* CREATE ROOM CONTROLLER
+roomsRouter.post("/create/:hotleid", verifyAdmin, createRoom);
 
-roomsRouter.get("/", (req, res) => {
-  res.send("This is rooms endPoint");
-});
+// *UPDATE ROOM CONTROLLER
+roomsRouter.put("/:id", verifyAdmin, updateRoom);
+
+// * DELETE ROOM CONTROLLER
+roomsRouter.delete("/:id/:hotleid", verifyAdmin, deleteRoom);
+
+//* GET PARTICULAR ROOM CONTROLLER
+roomsRouter.get("/:id", getRoom);
+
+// * GET ALL ROOM CONTROLLER
+roomsRouter.get("/", getRooms);
 
 module.exports = {
   roomsRouter,
