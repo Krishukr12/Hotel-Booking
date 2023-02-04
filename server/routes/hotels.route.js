@@ -9,7 +9,7 @@ const {
   getHotels,
   getHotel,
 } = require("../controllers/hotelController");
-const verifyAdmin = require("../middlewares/verifyAdmin.js");
+const { verifyAdmin } = require("../middlewares/verifyAdmin.js");
 //* CREATE HOTEL CONTROLLER
 hotelsRouter.post("/create", verifyAdmin, createHotel);
 

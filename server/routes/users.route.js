@@ -1,6 +1,6 @@
 const express = require("express");
-const verifyUser = require("../middlewares/verifyUser.js");
-const verifyAdmin = require("../middlewares/verifyAdmin.js");
+const { verifyUser } = require("../middlewares/verifyUser.js");
+const { verifyAdmin } = require("../middlewares/verifyAdmin.js");
 const usersRouter = express.Router();
 const {
   updateUser,

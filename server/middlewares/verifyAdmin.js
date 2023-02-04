@@ -1,6 +1,6 @@
 const createError = require("../utils/error.js");
 const verifyToken = require("../middlewares/verfifyToken.js");
-const verifyUser = (req, res, next) => {
+const verifyAdmin = (req, res, next) => {
   verifyToken(req, res, next, () => {
     if (req.user.isAdmin) {
       next();
@@ -10,4 +10,8 @@ const verifyUser = (req, res, next) => {
       }
     }
   });
+};
+
+module.exports = {
+  verifyAdmin,
 };
