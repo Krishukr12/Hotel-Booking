@@ -1,5 +1,5 @@
-const createError = require("../utils/error.js");
-const verifyToken = require("../middlewares/verfifyToken.js");
+const { createError } = require("../utils/error.js");
+const { verifyToken } = require("../middlewares/verfifyToken.js");
 const verifyAdmin = (req, res, next) => {
   verifyToken(req, res, next, () => {
     if (req.user.isAdmin) {

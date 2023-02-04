@@ -1,5 +1,5 @@
-const createError = require("../utils/error");
-const verifyToken = require("../middlewares/verfifyToken.js");
+const { createError } = require("../utils/error");
+const { verifyToken } = require("../middlewares/verfifyToken.js");
 const verifyUser = (req, res, next) => {
   verifyToken(req, res, next, () => {
     if (req.user.id === req.params.id || req.user.isAdmin) {

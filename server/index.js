@@ -5,16 +5,31 @@ const { authRouter } = require("./routes/auth.route.js");
 const { hotelsRouter } = require("./routes/hotels.route.js");
 const { roomsRouter } = require("./routes/rooms.route.js");
 const { usersRouter } = require("./routes/users.route.js");
+const { verifyUser } = require("./middlewares/verifyUser.js");
+const { verifyToken } = require("./middlewares/verfifyToken.js");
+const { verifyAdmin } = require("./middlewares/verifyAdmin.js");
 var cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
+app.use(cookieParser());
 app.get("/", (req, res) => {
   res.send("Hi ! Krishu");
 });
 
+// Testing authentication and autherization middleware
+
+app.get("/token", verifyToken, (req, res) => {
+  res.send("Token is available");
+});
+app.get("/userverify/:id", verifyUser, (req, res) => {
+  res.send("You are a user");
+});
+app.get("/admin/:id", verifyAdmin, (req, res) => {
+  res.send("you are a admin");
+});
 // * Middlewares
-app.use(cookieParser());
+
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/hotels", hotelsRouter);
