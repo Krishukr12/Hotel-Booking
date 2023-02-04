@@ -11,8 +11,8 @@ const roomSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const UserModel = mongoose.model("Room", roomSchema);
+const RoomModel = mongoose.model("Room", roomSchema);
 
 module.exports = {
-  roomSchema,
+  RoomModel,
 };
