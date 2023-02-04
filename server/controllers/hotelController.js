@@ -1,4 +1,5 @@
 const { HotelModel } = require("../models/Hotel.models.js");
+
 const createHotel = async (req, res, next) => {
   const newHotel = new HotelModel(req.body);
   try {
@@ -8,6 +9,7 @@ const createHotel = async (req, res, next) => {
     next(error);
   }
 };
+
 
 const updateHotel = async (req, res, next) => {
   try {
