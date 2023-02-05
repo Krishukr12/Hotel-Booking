@@ -9,6 +9,7 @@ const { usersRouter } = require("./routes/users.route.js");
 // const { verifyToken } = require("./middlewares/verfifyToken.js");
 // const { verifyAdmin } = require("./middlewares/verifyAdmin.js");
 var cookieParser = require("cookie-parser");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 //   res.send("you are a admin");
 // });
 // * Middlewares
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
