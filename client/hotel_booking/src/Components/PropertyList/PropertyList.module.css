@@ -1,0 +1,50 @@
+.pList {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pListItem {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pListImg {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.pListTitles > h1 {
+  font-size: 18px;
+  color: #444;
+  text-transform: capitalize;
+}
+
+.pListTitles > h2 {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* ...............Media queries(Medium Device)........................ */
+@media screen and (max-width: 1024px) {
+}
+/* ....................Media queries (Small Devices)............... */
+
+@media screen and (max-width: 600px) {
+  .pList {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .pListImg {
+    width: 90%;
+    height: 250px;
+    object-fit: cover;
+    margin: auto;
+    border-radius: 10px;
+  }
+}

@@ -133,6 +133,9 @@
   .headerListItem.active {
     margin-left: 15px;
   }
+  .headerListItem {
+    white-space: nowrap;
+  }
 }
 /* ....................Media queries (Small Devices)............... */
 
