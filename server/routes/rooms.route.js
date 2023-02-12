@@ -7,6 +7,7 @@ const {
   deleteRoom,
   getRoom,
   getRooms,
+  updateRoomAvailability,
 } = require("../controllers/roomController.js");
 const { verifyAdmin } = require("../middlewares/verifyAdmin.js");
 //* CREATE ROOM CONTROLLER
@@ -14,6 +15,7 @@ roomsRouter.post("/create/:hotleid", verifyAdmin, createRoom);
 
 // *UPDATE ROOM CONTROLLER
 roomsRouter.put("/:id", verifyAdmin, updateRoom);
+roomsRouter.put("/availability/:id", updateRoomAvailability);
 
 // * DELETE ROOM CONTROLLER
 roomsRouter.delete("/:id/:hotleid", verifyAdmin, deleteRoom);

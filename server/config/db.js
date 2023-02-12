@@ -3,7 +3,8 @@ require("dotenv").config();
 mongoose.set("strictQuery", true);
 const connection = mongoose.connect(process.env.MONGO_URL);
 
-// *  For Constant Checking either mongoDB is connected or not
+// ?  For Constant Checking either mongoDB is connected or not
+
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected");
 });

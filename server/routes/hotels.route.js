@@ -10,6 +10,7 @@ const {
   getHotel,
   countByCity,
   countByType,
+  getHotelRooms,
 } = require("../controllers/hotelController");
 const { verifyAdmin } = require("../middlewares/verifyAdmin.js");
 //* CREATE HOTEL CONTROLLER
@@ -30,6 +31,7 @@ hotelsRouter.get("/", getHotels);
 //GET THE COUNT OF HOTEL ACCORDING TO TYPE AND CITY
 hotelsRouter.get("/find/countByCity", countByCity);
 hotelsRouter.get("/find/countByType", countByType);
+hotelsRouter.get("/room/:id", getHotelRooms);
 module.exports = {
   hotelsRouter,
 };
