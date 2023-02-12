@@ -1,0 +1,40 @@
+.navbar {
+  height: 50px;
+  background-color: #003580;
+  display: flex;
+  justify-content: center;
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1024px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 500;
+}
+
+.navButton {
+  margin-left: 20px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* ...............Media queries(Medium Device)........................ */
+@media screen and (max-width: 1024px) {
+  .navContainer {
+    width: 90%;
+  }
+}
+/* ....................Media queries (Small Devices)............... */
+
+@media screen and (max-width: 600px) {
+  .navButton {
+    margin-left: 12px;
+  }
+}
