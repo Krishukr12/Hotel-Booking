@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Navbar.module.css";
+
 export const Navbar = () => {
   // TODO: USER WILL GET USING API
   // const user = {
@@ -17,8 +18,14 @@ export const Navbar = () => {
           user.username
         ) : (
           <div className={classes.navItems}>
-            <button className={classes.navButton}>Register</button>
-            <button className={classes.navButton}>Login</button>
+            <Link to="/register">
+              {" "}
+              <button className={classes.navButton}>Register</button>
+            </Link>
+            <Link to="/login">
+              {" "}
+              <button className={classes.navButton}>Login</button>
+            </Link>
           </div>
         )}
       </div>

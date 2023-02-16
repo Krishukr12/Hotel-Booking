@@ -7,6 +7,7 @@ import { Navbar } from "../../Components/Navbar/Navbar";
 import Header from "../../Components/Header/Header";
 import { HotelCard } from "../../Components/Hotel Card/HotelCard";
 import classes from "./Allhotels.module.css";
+import { Button } from "@chakra-ui/react";
 
 export const Allhotels = () => {
   const [loading, setLoading] = useState(false);
@@ -123,7 +124,7 @@ export const Allhotels = () => {
                 </div>
               </div>
             </div>
-            <button onClick={handleClick}>Search</button>
+            <Button onClick={handleClick}>Search</Button>
           </div>
           <div className={classes.listResult}>
             {loading ? (
