@@ -7,6 +7,7 @@ export const MainRoutes = () => {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/hotels" element={<h1>Hotels Page</h1>}></Route>
       </Routes>
     </>
   );
