@@ -10,6 +10,7 @@ import {
   Input,
   IconButton,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
@@ -68,11 +69,19 @@ const ListHeader = ({ children }) => {
 };
 
 export default function Footer() {
+  const toast = useToast();
+  const handleSubscribe = () => {
+    toast({
+      title: "You will be updated shortly",
+      description: "Thanks for subscribing!",
+      status: "success",
+      position: "top",
+      duration: 9000,
+      isClosable: true,
+    });
+  };
   return (
-    <Box
-      //   bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-    >
+    <Box color={useColorModeValue("gray.700", "gray.200")}>
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid
           templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
@@ -125,6 +134,7 @@ export default function Footer() {
                 }}
               />
               <IconButton
+                onClick={handleSubscribe}
                 bg={useColorModeValue("green.400", "green.800")}
                 color={useColorModeValue("white", "gray.800")}
                 _hover={{

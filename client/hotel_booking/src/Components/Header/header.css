@@ -48,9 +48,9 @@
 }
 
 .headerSearch {
-  height: 50px;
+  height: 55px;
   background-color: white;
-  border: 3px solid #febb02;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: flex;
   align-items: center;
   justify-content: space-around;
