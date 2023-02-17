@@ -7,6 +7,8 @@ import thunk from "redux-thunk";
 import { Reducer } from "./reducer";
 const intialState = {
   isLoading: false,
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  error: null,
 };
 export const store = createStore(
   Reducer,
