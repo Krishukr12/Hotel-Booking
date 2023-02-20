@@ -60,13 +60,15 @@ export const Login = () => {
             onChange={handleChange}
             className={classes.lInput}
           />
-          <button
+          <Button
+            colorScheme="teal"
+            variant="outline"
             disabled={isLoading}
             onClick={handleClick}
             className={classes.lButton}
           >
             Login
-          </button>
+          </Button>
           {error && <span>{error.message}</span>}
         </div>
       </div>
