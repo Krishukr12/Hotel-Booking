@@ -27,7 +27,7 @@
   border: none;
   width: 50%;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin: auto;
 }
 
@@ -35,3 +35,6 @@
   background-color: #0071c28c;
   cursor: not-allowed;
 }
+/* .form_title {
+  margin-top: 20px;
+} */

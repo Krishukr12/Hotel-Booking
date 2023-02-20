@@ -9,7 +9,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
 } from "../../redux/actionType";
-import { Button } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar/Navbar";
 export const Login = () => {
   const navigate = useNavigate();
@@ -45,17 +45,17 @@ export const Login = () => {
       <Navbar />
       <div className={classes.login}>
         <div className={classes.lContainer}>
-          <h1>Login</h1>
+          <h1 className={classes.form_title}>Login</h1>
           <input
             type="text"
-            placeholder="username"
+            placeholder="Username"
             id="username"
             onChange={handleChange}
             className={classes.lInput}
           />
           <input
             type="password"
-            placeholder="password"
+            placeholder="Password"
             id="password"
             onChange={handleChange}
             className={classes.lInput}
@@ -69,7 +69,12 @@ export const Login = () => {
           >
             Login
           </Button>
-          {error && <span>{error.message}</span>}
+          {error && (
+            <Alert status="error">
+              <AlertIcon />
+              {error.message}
+            </Alert>
+          )}
         </div>
       </div>
     </>
