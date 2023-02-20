@@ -1,4 +1,10 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "./actionType";
+import {
+  LOGIN_FAILURE,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  NEW_SEARCH,
+  RESET_SEARCH,
+} from "./actionType";
 
 export const Reducer = (state, { type, payload }) => {
   switch (type) {
@@ -27,7 +33,27 @@ export const Reducer = (state, { type, payload }) => {
         error: payload,
       };
     }
+    case NEW_SEARCH: {
+      return {
+        ...state,
+        searchedInitialState: payload,
+      };
+    }
 
+    case RESET_SEARCH: {
+      return {
+        ...state,
+        searchedInitialState: {
+          city: undefined,
+          dates: [],
+          options: {
+            adult: undefined,
+            children: undefined,
+            room: undefined,
+          },
+        },
+      };
+    }
     default: {
       return state;
     }

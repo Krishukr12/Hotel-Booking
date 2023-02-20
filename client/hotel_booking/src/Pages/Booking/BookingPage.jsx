@@ -11,6 +11,7 @@ import { Navbar } from "../../Components/Navbar/Navbar";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import classes from "./BookingPage.module.css";
+import { useSelector } from "react-redux";
 const BookingPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,11 +23,6 @@ const BookingPage = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  // const { data, loading, error } = useFetch(
-  //   `http://localhost:8080/hotels/${id}`
-  // );
-
-  // const { user } = useContext(AuthContext);
   useEffect(() => {
     // setLoading(true);
     callApi();
@@ -34,7 +30,7 @@ const BookingPage = () => {
 
   const callApi = async () => {
     await fetch(`http://localhost:8080/hotels/${id}`, {
-      method: "GET", // or 'PUT'
+      method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
@@ -46,12 +42,9 @@ const BookingPage = () => {
       });
   };
 
-  const user = {
-    username: "admin",
-  };
   const navigate = useNavigate();
-
-  // const { dates, options } = useContext(SearchContext);
+  const user = "krishan";
+  const { dates, options } = useSelector((state) => state.searchedInitialState);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -60,7 +53,7 @@ const BookingPage = () => {
     return diffDays;
   }
 
-  // const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -157,15 +150,14 @@ const BookingPage = () => {
               </div>
               <div className={classes.hotelDetailsPrice}>
                 <h1>Perfect for a -night stay!</h1>
-                {/* <h1>Perfect for a {days}-night stay!</h1> */}
+                <h1>Perfect for a {days}-night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  kk
-                  {/* <b>{days * data.cheapestPrice * options.room} ₹</b> ({days}{" "}
-                  nights) */}
+                  <b>{days * data.cheapestPrice * options.room} ₹</b> ({days}{" "}
+                  nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>

@@ -16,12 +16,17 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { Button } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 // import { SearchContext } from "../../context/SearchContext";
 // import { AuthContext } from "../../context/AuthContext";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+  console.log(user);
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -36,9 +41,6 @@ const Header = ({ type }) => {
     room: 1,
   });
 
-  const navigate = useNavigate();
-  //   const { user } = useContext(AuthContext);
-  const user = "krishan";
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -48,13 +50,12 @@ const Header = ({ type }) => {
     });
   };
 
-  //   const { dispatch } = useContext(SearchContext);
-
   const handleSearch = () => {
     // dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
-  // ? HANDLE CALANDER OPNE AND OTION
+  // ? HANDLE CALENDER OPEN AND OPTION
   const handleCalenderOpen = () => {
     setOpenOptions(false);
     setOpenDate(!openDate);

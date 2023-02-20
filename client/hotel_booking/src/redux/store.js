@@ -9,6 +9,15 @@ const intialState = {
   isLoading: false,
   user: JSON.parse(localStorage.getItem("user")) || null,
   error: null,
+  searchedInitialState: {
+    city: undefined,
+    dates: [],
+    options: {
+      adult: undefined,
+      children: undefined,
+      room: undefined,
+    },
+  },
 };
 export const store = createStore(
   Reducer,

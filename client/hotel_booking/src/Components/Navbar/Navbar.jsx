@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Navbar.module.css";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
-  // TODO: USER WILL GET USING API
-  // const user = {
-  //   username: "Krishan",
-  // };
-  const user = null;
+  const user = useSelector((state) => state.user);
+
   return (
     <div className={classes.navbar}>
       <div className={classes.navContainer}>
