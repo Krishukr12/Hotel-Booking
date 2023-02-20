@@ -9,8 +9,11 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
 } from "../../redux/actionType";
+import { Button } from "@chakra-ui/react";
+import { Navbar } from "../../Components/Navbar/Navbar";
 export const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state) => state);
 
   const [credentials, setCredentials] = useState({
@@ -21,8 +24,6 @@ export const Login = () => {
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
-  const dispatch = useDispatch();
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -40,31 +41,35 @@ export const Login = () => {
   };
 
   return (
-    <div className={classes.login}>
-      <div className={classes.lContainer}>
-        <input
-          type="text"
-          placeholder="username"
-          id="username"
-          onChange={handleChange}
-          className={classes.lInput}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          onChange={handleChange}
-          className={classes.lInput}
-        />
-        <button
-          disabled={isLoading}
-          onClick={handleClick}
-          className={classes.lButton}
-        >
-          Login
-        </button>
-        {error && <span>{error.message}</span>}
+    <>
+      <Navbar />
+      <div className={classes.login}>
+        <div className={classes.lContainer}>
+          <h1>Login</h1>
+          <input
+            type="text"
+            placeholder="username"
+            id="username"
+            onChange={handleChange}
+            className={classes.lInput}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            id="password"
+            onChange={handleChange}
+            className={classes.lInput}
+          />
+          <button
+            disabled={isLoading}
+            onClick={handleClick}
+            className={classes.lButton}
+          >
+            Login
+          </button>
+          {error && <span>{error.message}</span>}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
