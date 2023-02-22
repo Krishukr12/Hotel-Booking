@@ -11,7 +11,7 @@ const { usersRouter } = require("./routes/users.route.js");
 var cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
-
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.get("/", (req, res) => {
@@ -50,7 +50,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT, async () => {
+app.listen(PORT, async () => {
   try {
     await connection;
   } catch (error) {
