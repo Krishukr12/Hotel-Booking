@@ -5,6 +5,15 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const register = async (req, res, next) => {
   const { email, password, username } = req.body;
+  const isUsernameTaken = await UserModel.findOne({ username: username });
+  const isEmailTaken = await UserModel.findOne({ email: email });
+  if (isUsernameTaken) {
+    return next(createError(404, "Username already taken!"));
+  }
+  if (isEmailTaken) {
+    return next(createError(404, "Email already taken!"));
+  }
+
   try {
     bcrypt.hash(password, 10, async function (err, hash) {
       const newUser = new UserModel({
@@ -30,7 +39,7 @@ const Login = async (req, res, next) => {
       user.password
     );
     if (!isPasswordCorrect)
-      return next(createError(400, "Wrong password or usename"));
+      return next(createError(400, "Wrong password or username !"));
 
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
