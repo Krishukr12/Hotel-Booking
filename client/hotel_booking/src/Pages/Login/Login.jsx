@@ -30,7 +30,7 @@ export const Login = () => {
     dispatch({ type: LOGIN_REQUEST });
     try {
       const res = await axios.post(
-        "http://localhost:8080/auth/login",
+        "https://hotel-f7gz.onrender.com/auth/login",
         credentials
       );
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });

@@ -21,7 +21,7 @@ export const Register = () => {
     if (credentials.email && credentials.password && credentials.username) {
       try {
         const res = await axios.post(
-          "http://localhost:8080/auth/register",
+          "https://hotel-f7gz.onrender.com/auth/register",
           credentials
         );
         toast({

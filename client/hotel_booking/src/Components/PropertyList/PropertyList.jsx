@@ -11,7 +11,7 @@ export const PropertyList = () => {
   }, []);
 
   const callApi = async () => {
-    await fetch("http://localhost:8080/hotels/find/countByType", {
+    await fetch("https://hotel-f7gz.onrender.com/hotels/find/countByType", {
       method: "GET", // or 'PUT'
     })
       .then((response) => response.json())

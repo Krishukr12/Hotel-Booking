@@ -14,9 +14,9 @@ export const Home = () => {
       <Header />
       <div className={classes.homeContainer}>
         <Featured />
-        <h1 className={classes.homeTitle}>Browse by property type</h1>
+        <h1 className={classes.homeTitle}>Property by type</h1>
         <PropertyList />
-        <h1 className="homeTitle">Homes guests love</h1>
+        <h1 className={classes.homeTitle}>Featured Property</h1>
         <FeaturedProperties />
         <Footer />
       </div>

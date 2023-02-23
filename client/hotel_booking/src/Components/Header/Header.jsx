@@ -97,13 +97,13 @@ const Header = ({ type }) => {
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
+              A relaxing bed after a relaxing bath
             </h1>
             <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free kissubooking account
+              {/* Book your stay, create memories, and experience comfort with ease - all in one app! */}
+              Discover Your Dream Getaway: Find the Perfect Accommodation with
+              Our Hotel Booking Website
             </p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

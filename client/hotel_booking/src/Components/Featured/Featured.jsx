@@ -12,7 +12,7 @@ export const Featured = () => {
 
   const callApi = async () => {
     await fetch(
-      "http://localhost:8080/hotels/find/countByCity/?cities=mumbai,delhi,noida",
+      "https://hotel-f7gz.onrender.com/hotels/find/countByCity/?cities=mumbai,delhi,noida",
       {
         method: "GET", // or 'PUT'
       }

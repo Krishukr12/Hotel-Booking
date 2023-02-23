@@ -1,9 +1,11 @@
 .header {
   background-color: #003580;
+  /* background-color: #1a202c; */
   color: white;
   display: flex;
   justify-content: center;
   position: relative;
+  font-size: 15px;
 }
 
 .headerContainer {
