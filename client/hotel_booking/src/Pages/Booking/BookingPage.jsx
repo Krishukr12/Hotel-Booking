@@ -29,7 +29,7 @@ const BookingPage = () => {
   }, []);
 
   const callApi = async () => {
-    await fetch(`http://localhost:8080/hotels/${id}`, {
+    await fetch(`https://hotel-f7gz.onrender.com/hotels/${id}`, {
       method: "GET",
     })
       .then((response) => response.json())

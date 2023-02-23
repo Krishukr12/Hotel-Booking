@@ -29,9 +29,9 @@ export const Allhotels = () => {
 
   const callApi = async () => {
     await fetch(
-      `http://localhost:8080/hotels?city=${destination}&min=${min || 0}&max=${
-        max || 9999
-      }`,
+      `https://hotel-f7gz.onrender.com/hotels?city=${destination}&min=${
+        min || 0
+      }&max=${max || 9999}`,
       {
         method: "GET",
       }
