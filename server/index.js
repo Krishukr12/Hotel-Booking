@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Hi ! Krishu");
+  res.send("Hi ! Krishu You're good to go");
 });
 
 // Testing authentication and autherization middleware
