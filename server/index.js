@@ -1,5 +1,5 @@
 const express = require("express");
-//? All Imports
+// * All Imports
 const connection = require("./config/db.js");
 const { authRouter } = require("./routes/auth.route.js");
 const { hotelsRouter } = require("./routes/hotels.route.js");
@@ -11,7 +11,7 @@ const { usersRouter } = require("./routes/users.route.js");
 var cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.get("/", (req, res) => {
