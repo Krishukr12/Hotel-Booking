@@ -6,7 +6,7 @@ export const Featured = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     callApi();
   }, []);
 

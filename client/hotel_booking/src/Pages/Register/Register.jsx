@@ -69,13 +69,9 @@ export const Register = () => {
             onChange={handleChange}
           />
           <div className={classes.submitButton}>
-            <Button
-              colorScheme="teal"
-              variant="outline"
-              onClick={handleRegister}
-            >
+            <button className={classes.lButton} onClick={handleRegister}>
               Register
-            </Button>
+            </button>
           </div>
 
           {error.status && error.message && (

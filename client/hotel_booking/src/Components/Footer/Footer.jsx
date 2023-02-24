@@ -15,6 +15,7 @@ import {
 import { ReactNode } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
+import classes from "./Footer.module.css";
 
 const Logo = ({ children, props, href }) => {
   return (
@@ -125,7 +126,8 @@ export default function Footer() {
           <Stack align={"flex-start"}>
             <ListHeader>Stay up to date</ListHeader>
             <Stack direction={"row"}>
-              <Input
+              <input
+                className={classes.emailButton}
                 placeholder={"Your email address"}
                 bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
                 border={0}
@@ -134,14 +136,20 @@ export default function Footer() {
                 }}
               />
               <IconButton
+                className={classes.subscribeButton}
                 onClick={handleSubscribe}
-                bg={useColorModeValue("green.400", "green.800")}
+                bg={"#4db5ff"}
                 color={useColorModeValue("white", "gray.800")}
                 _hover={{
-                  bg: "green.600",
+                  bg: "#ffff",
+                  color: "#1f1f38",
                 }}
                 aria-label="Subscribe"
-                icon={<BiMailSend />}
+                icon={
+                  <BiMailSend
+                    style={{ background: "unset", color: "#1f1f38" }}
+                  />
+                }
               />
             </Stack>
           </Stack>

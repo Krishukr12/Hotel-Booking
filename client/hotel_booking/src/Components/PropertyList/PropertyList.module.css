@@ -11,6 +11,7 @@
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  color: white;
 }
 
 .pListImg {
@@ -21,7 +22,7 @@
 
 .pListTitles > h1 {
   font-size: 18px;
-  color: #444;
+  color: white;
   text-transform: capitalize;
 }
 

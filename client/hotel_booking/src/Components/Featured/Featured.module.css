@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .featuredItem {
@@ -13,7 +13,7 @@
   border-radius: 10px;
   overflow: hidden;
   height: 250px;
-  flex: 1;
+  /* flex: 1; */
 }
 
 .featuredImg {
@@ -30,6 +30,7 @@
   font-size: 18px;
   text-transform: capitalize;
   text-align: left;
+  border: 1px solid red;
 }
 
 /* ...............Media queries(Medium Device)........................ */

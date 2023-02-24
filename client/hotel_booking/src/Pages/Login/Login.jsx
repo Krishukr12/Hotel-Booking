@@ -60,7 +60,7 @@ export const Login = () => {
             onChange={handleChange}
             className={classes.lInput}
           />
-          <Button
+          <button
             colorScheme="teal"
             variant="outline"
             disabled={isLoading}
@@ -68,7 +68,7 @@ export const Login = () => {
             className={classes.lButton}
           >
             Login
-          </Button>
+          </button>
           {error && (
             <Alert status="error">
               <AlertIcon />

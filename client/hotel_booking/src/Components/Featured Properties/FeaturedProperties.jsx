@@ -14,14 +14,17 @@ export const FeaturedProperties = () => {
     "https://www.lushome.com/wp-content/uploads/2013/10/forest-cottages-modern-houses-green-living-25.jpg",
   ];
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     callApi();
   }, []);
 
   const callApi = async () => {
-    await fetch("http://localhost:8080/hotels/?limit=4&featured=true", {
-      method: "GET",
-    })
+    await fetch(
+      "https://hotel-f7gz.onrender.com/hotels/?limit=4&featured=true",
+      {
+        method: "GET",
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);

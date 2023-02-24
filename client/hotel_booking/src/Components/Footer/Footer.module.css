@@ -1,0 +1,9 @@
+.emailButton {
+  border: 1px solid rgba(77, 181, 255, 0.4);
+  padding-left: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+.subscribeButton {
+  transition: all 400ms ease;
+}
