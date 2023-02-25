@@ -17,8 +17,6 @@ import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { Button } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-// import { SearchContext } from "../../context/SearchContext";
-// import { AuthContext } from "../../context/AuthContext";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -26,7 +24,6 @@ const Header = ({ type }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  console.log(user);
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -51,11 +48,12 @@ const Header = ({ type }) => {
   };
 
   const handleSearch = () => {
-    // dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
-  // ? HANDLE CALENDER OPEN AND OPTION
+  
+  // ? HANDLE CALENDER OPEN AND OPTION 
+
   const handleCalenderOpen = () => {
     setOpenOptions(false);
     setOpenDate(!openDate);
@@ -100,7 +98,6 @@ const Header = ({ type }) => {
               A relaxing bed after a relaxing bath
             </h1>
             <p className="headerDesc">
-              {/* Book your stay, create memories, and experience comfort with ease - all in one app! */}
               Discover Your Dream Getaway: Find the Perfect Accommodation with
               Our Hotel Booking Website
             </p>

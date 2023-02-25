@@ -76,13 +76,9 @@ export const Register = () => {
 
           {error.status && error.message && (
             <Alert
-              style={{
-                height: "30px",
-                width: "90%",
-                margin: "auto",
-                textAlign: "center",
-                marginTop: "20px",
-              }}
+              color={"red"}
+              bg={"unset"}
+              textAlign={"center"}
               status="error"
             >
               <AlertIcon />

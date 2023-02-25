@@ -9,7 +9,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
 } from "../../redux/actionType";
-import { Alert, AlertIcon, Button } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button, Spinner } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar/Navbar";
 export const Login = () => {
   const navigate = useNavigate();
@@ -67,10 +67,10 @@ export const Login = () => {
             onClick={handleClick}
             className={classes.lButton}
           >
-            Login
+            {isLoading ? <Spinner size="md" bg={"#0071c28c"} /> : "Login"}
           </button>
           {error && (
-            <Alert status="error">
+            <Alert color={"red"} bg={"unset"} textAlign={"center"}>
               <AlertIcon />
               {error.message}
             </Alert>

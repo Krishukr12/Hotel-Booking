@@ -157,11 +157,9 @@
 @media screen and (max-width: 600px) {
   .headerSearch {
     height: 50px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* padding: 10px 0px; */
     border-radius: 5px;
     position: absolute;
     bottom: -25px;
@@ -170,7 +168,6 @@
     color: black;
     gap: 10px;
     font-size: 15px;
-    /* display: none; */
   }
   .headerSearchInput {
     border: none;
