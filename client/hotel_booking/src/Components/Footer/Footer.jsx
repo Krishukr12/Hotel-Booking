@@ -73,12 +73,19 @@ export default function Footer() {
   const toast = useToast();
   const handleSubscribe = () => {
     toast({
-      title: "You will be updated shortly",
-      description: "Thanks for subscribing!",
-      status: "success",
-      position: "top",
-      duration: 9000,
-      isClosable: true,
+      position: "top-center",
+
+      render: () => (
+        <Box
+          color="#ffff"
+          borderRadius="5px"
+          p={3}
+          bg="#1f1f38"
+          border="1px solid #4db5ff"
+        >
+          Thanks for subscribing! <br></br>we'll get back to you soon
+        </Box>
+      ),
     });
   };
   return (
@@ -121,7 +128,7 @@ export default function Footer() {
             <Link href={"#"}>Terms of Service</Link>
             <Link href={"#"}>Legal</Link>
             <Link href={"#"}>Privacy Policy</Link>
-            <Link href={"#"}>Satus</Link>
+            <Link href={"#"}>Status</Link>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Stay up to date</ListHeader>

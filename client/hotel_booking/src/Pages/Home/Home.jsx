@@ -16,7 +16,7 @@ export const Home = () => {
         <Featured />
         <h1 className={classes.homeTitle}>Property by type</h1>
         <PropertyList />
-        <h1 className={classes.homeTitle}>Featured Property</h1>
+        <h1 className={classes.homeTitle2}>Featured Property</h1>
         <FeaturedProperties />
         <Footer />
       </div>

@@ -135,6 +135,7 @@ const Header = ({ type }) => {
                     ranges={dates}
                     className="date"
                     minDate={new Date()}
+                    rangeColors="red"
                   />
                 )}
               </div>

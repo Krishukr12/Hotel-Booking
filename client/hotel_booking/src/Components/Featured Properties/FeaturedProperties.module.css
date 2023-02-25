@@ -8,7 +8,7 @@
 
 .fpItem {
   flex: 1;
-  gap: 10px;
+  gap: 2px;
   display: flex;
   flex-direction: column;
 }
@@ -24,14 +24,23 @@
 .fpName {
   color: white;
   font-weight: bold;
+  text-align: left;
+  padding-left: 10px;
+  text-transform: capitalize;
 }
 
 .fpCity {
   font-weight: 300;
+  text-align: left;
+  padding-left: 10px;
+  text-transform: capitalize;
 }
 
 .fpPrice {
   font-weight: 500;
+  text-align: left;
+  padding-left: 10px;
+  text-transform: capitalize;
 }
 
 .fpRating > button {
@@ -45,6 +54,8 @@
 
 .fpRating > span {
   font-size: 14px;
+
+  float: left;
 }
 
 /* ...............Media queries(Medium Device)........................ */
@@ -56,5 +67,16 @@
   .fp {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+  }
+  .fpName {
+    padding-left: 25px;
+  }
+
+  .fpCity {
+    padding-left: 25px;
+  }
+
+  .fpPrice {
+    padding-left: 25px;
   }
 }

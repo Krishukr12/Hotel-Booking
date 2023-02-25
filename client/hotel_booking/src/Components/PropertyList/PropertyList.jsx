@@ -42,10 +42,8 @@ export const PropertyList = () => {
               <div className={classes.pListItem} key={i}>
                 <img src={img} alt="" className={classes.pListImg} />
                 <div className={classes.pListTitles}>
-                  <h1 >{data[i]?.type}</h1>
-                  <h2>
-                    {data[i]?.count} {data[i]?.type}
-                  </h2>
+                  <h1>{data[i]?.type}</h1>
+                  <h2>{data[i]?.count}</h2>
                 </div>
               </div>
             ))}

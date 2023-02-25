@@ -94,11 +94,18 @@
   position: absolute;
   top: 50px;
   z-index: 2;
-  background-color: rgb(228, 214, 214);
-  border: 1px solid red;
+  color: white;
+  /* border: 1px solid red; */
+  display: flex;
+
+  /* background-color: rgb(228, 214, 214); */
+
   /* background-color: transparent; */
 }
-
+.date :first-child {
+  background-color: #1f1f38;
+  color: #ffff;
+}
 .options {
   z-index: 2;
   position: absolute;
@@ -150,8 +157,7 @@
 @media screen and (max-width: 600px) {
   .headerSearch {
     height: 50px;
-    background-color: white;
-    border: 3px solid #febb02;
+
     display: flex;
     align-items: center;
     justify-content: space-between;

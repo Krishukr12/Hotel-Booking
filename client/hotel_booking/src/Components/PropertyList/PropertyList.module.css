@@ -19,16 +19,20 @@
   height: 150px;
   object-fit: cover;
 }
-
+.pListTitles {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+}
 .pListTitles > h1 {
-  font-size: 18px;
   color: white;
   text-transform: capitalize;
+  margin-left: 10px;
 }
 
 .pListTitles > h2 {
-  font-size: 14px;
   font-weight: 300;
+  margin-right: 10px;
 }
 
 /* ...............Media queries(Medium Device)........................ */
@@ -47,5 +51,9 @@
     object-fit: cover;
     margin: auto;
     border-radius: 10px;
+  }
+  .pListTitles {
+    height: max-content;
+    padding: 10px 20px 10px 20px;
   }
 }

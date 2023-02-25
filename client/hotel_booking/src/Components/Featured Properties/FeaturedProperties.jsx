@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 import classes from "./FeaturedProperties.module.css";
+import { GrFormLocation } from "react-icons/gr";
 
 export const FeaturedProperties = () => {
   const [data, setData] = useState([]);
