@@ -7,13 +7,19 @@ import { handleRegister } from "../../redux/action.js";
 import { useDispatch, useSelector } from "react-redux";
 import {
   REGISTER_REQUEST_FAILURE,
+  REGISTER_REQUEST_SUCCESS,
   RESET_LOADING_STATUS,
 } from "../../redux/actionType";
+import { useCustomToast } from "../../hooks/useToast";
+
 export const Register = () => {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({});
   const { isLoading, error } = useSelector((state) => state);
+  const { ShowCustomeToast } = useCustomToast();
+  const navigate = useNavigate();
 
+  //! : input change handler............
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({
@@ -22,9 +28,16 @@ export const Register = () => {
     });
   };
 
+  // ! : Register request handler using redux............
   const handleRegisterRequest = async () => {
+    //? Check for empty fields
     if (credentials.email && credentials.password && credentials.username) {
-      await handleRegister(credentials, dispatch);
+      const res = await handleRegister(credentials, dispatch);
+      if (res.type === REGISTER_REQUEST_SUCCESS) {
+        // ? : Custom hook to show custome toast
+        ShowCustomeToast("Registration Successful");
+        navigate("/login");
+      }
     } else {
       dispatch({
         type: REGISTER_REQUEST_FAILURE,
@@ -37,6 +50,7 @@ export const Register = () => {
     }
   };
   useEffect(() => {
+    //? : To make sure that the loading status is reset when the page is changed
     dispatch({ type: RESET_LOADING_STATUS });
   }, []);
   return (

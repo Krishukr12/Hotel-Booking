@@ -37,7 +37,6 @@ export const handleLogin = async (credentials, dispatch) => {
       credentials
     );
     return dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    // navigate("/");
   } catch (err) {
     return dispatch({ type: LOGIN_FAILURE, payload: err.response.data });
   }

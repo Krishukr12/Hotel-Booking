@@ -2,16 +2,23 @@ import { useEffect, useState } from "react";
 import classes from "./Login.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { LOGIN_FAILURE, RESET_LOADING_STATUS } from "../../redux/actionType";
-import { Alert, AlertIcon, Button, Spinner } from "@chakra-ui/react";
+import {
+  LOGIN_FAILURE,
+  LOGIN_SUCCESS,
+  RESET_LOADING_STATUS,
+} from "../../redux/actionType";
+import { Alert, AlertIcon, Box } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { handleLogin } from "../../redux/action";
+import { useNavigate } from "react-router-dom";
+import { useCustomToast } from "../../hooks/useToast.js";
 export const Login = () => {
+  const { ShowCustomeToast } = useCustomToast();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isLoading, error } = useSelector((state) => state);
-
   const [credentials, setCredentials] = useState({});
-
+  //! : input change handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials((prev) => ({ ...prev, [name]: value }));
@@ -19,14 +26,20 @@ export const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    //? : Check for empty fields
     if (credentials.username && credentials.password) {
-      await handleLogin(credentials, dispatch);
+      const res = await handleLogin(credentials, dispatch);
+      if (res.type === LOGIN_SUCCESS) {
+        // ? : Custom hook to show custome toast
+        ShowCustomeToast("Login Successfull");
+        navigate("/");
+      }
     } else {
       dispatch({
         type: LOGIN_FAILURE,
         payload: {
           success: false,
-          status: 404,
+          status: 400,
           message: "All fields are required !",
         },
       });
@@ -34,6 +47,7 @@ export const Login = () => {
   };
 
   useEffect(() => {
+    //? : To make sure that the loading status is reset when the page is changed
     dispatch({ type: RESET_LOADING_STATUS });
   }, []);
 
@@ -64,7 +78,7 @@ export const Login = () => {
           >
             {isLoading ? "Loading..." : "Login"}
           </button>
-          {error && (
+          {error && error.message && (
             <Alert color={"red"} bg={"unset"} textAlign={"center"}>
               <AlertIcon />
               {error.message}
