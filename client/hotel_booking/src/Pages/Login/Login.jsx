@@ -1,44 +1,41 @@
-import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import classes from "./Login.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {
-  LOGIN_FAILURE,
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-} from "../../redux/actionType";
+import { LOGIN_FAILURE, RESET_LOADING_STATUS } from "../../redux/actionType";
 import { Alert, AlertIcon, Button, Spinner } from "@chakra-ui/react";
 import { Navbar } from "../../Components/Navbar/Navbar";
+import { handleLogin } from "../../redux/action";
 export const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state) => state);
 
-  const [credentials, setCredentials] = useState({
-    username: undefined,
-    password: undefined,
-  });
+  const [credentials, setCredentials] = useState({});
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    const { name, value } = e.target;
+    setCredentials((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
-    dispatch({ type: LOGIN_REQUEST });
-    try {
-      const res = await axios.post(
-        "https://hotel-f7gz.onrender.com/auth/login",
-        credentials
-      );
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-      navigate("/");
-    } catch (err) {
-      dispatch({ type: LOGIN_FAILURE, payload: err.response.data });
+    if (credentials.username && credentials.password) {
+      await handleLogin(credentials, dispatch);
+    } else {
+      dispatch({
+        type: LOGIN_FAILURE,
+        payload: {
+          success: false,
+          status: 404,
+          message: "All fields are required !",
+        },
+      });
     }
   };
+
+  useEffect(() => {
+    dispatch({ type: RESET_LOADING_STATUS });
+  }, []);
 
   return (
     <>
@@ -49,25 +46,23 @@ export const Login = () => {
           <input
             type="text"
             placeholder="Username"
-            id="username"
+            name="username"
             onChange={handleChange}
             className={classes.lInput}
           />
           <input
             type="password"
             placeholder="Password"
-            id="password"
+            name="password"
             onChange={handleChange}
             className={classes.lInput}
           />
           <button
-            colorScheme="teal"
-            variant="outline"
             disabled={isLoading}
             onClick={handleClick}
             className={classes.lButton}
           >
-            {isLoading ? <Spinner size="md" bg={"#0071c28c"} /> : "Login"}
+            {isLoading ? "Loading..." : "Login"}
           </button>
           {error && (
             <Alert color={"red"} bg={"unset"} textAlign={"center"}>

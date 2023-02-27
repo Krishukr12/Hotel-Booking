@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Register.module.css";
 import { Alert, AlertIcon, Button, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Navbar } from "../../Components/Navbar/Navbar";
-
+import { handleRegister } from "../../redux/action.js";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  REGISTER_REQUEST_FAILURE,
+  RESET_LOADING_STATUS,
+} from "../../redux/actionType";
 export const Register = () => {
+  const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({});
-  const [error, setError] = useState({ status: false, message: "" });
-  const toast = useToast();
-  const navigate = useNavigate();
+  const { isLoading, error } = useSelector((state) => state);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({
@@ -17,30 +21,24 @@ export const Register = () => {
       [name]: value,
     });
   };
-  const handleRegister = async () => {
+
+  const handleRegisterRequest = async () => {
     if (credentials.email && credentials.password && credentials.username) {
-      try {
-        const res = await axios.post(
-          "https://hotel-f7gz.onrender.com/auth/register",
-          credentials
-        );
-        toast({
-          title: "Registration Successful",
-          description: "Thanks for Registration!",
-          status: "success",
-          position: "top",
-          duration: 3000,
-          isClosable: true,
-        });
-        navigate("/login");
-      } catch (err) {
-        setError({ status: true, message: err.response.data.message });
-      }
+      await handleRegister(credentials, dispatch);
     } else {
-      setError({ status: true, message: "All fields are required" });
+      dispatch({
+        type: REGISTER_REQUEST_FAILURE,
+        payload: {
+          success: false,
+          status: 404,
+          message: "All fields are required !",
+        },
+      });
     }
   };
-
+  useEffect(() => {
+    dispatch({ type: RESET_LOADING_STATUS });
+  }, []);
   return (
     <>
       <Navbar />
@@ -69,12 +67,16 @@ export const Register = () => {
             onChange={handleChange}
           />
           <div className={classes.submitButton}>
-            <button className={classes.lButton} onClick={handleRegister}>
-              Register
+            <button
+              disabled={isLoading}
+              className={classes.lButton}
+              onClick={handleRegisterRequest}
+            >
+              {isLoading ? "Loading..." : "Register"}
             </button>
           </div>
 
-          {error.status && error.message && (
+          {error && error.message && (
             <Alert
               color={"red"}
               bg={"unset"}
