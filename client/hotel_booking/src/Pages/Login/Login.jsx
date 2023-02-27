@@ -30,6 +30,7 @@ export const Login = () => {
     if (credentials.username && credentials.password) {
       const res = await handleLogin(credentials, dispatch);
       if (res.type === LOGIN_SUCCESS) {
+        localStorage.setItem("user", JSON.stringify(res.payload));
         // ? : Custom hook to show custome toast
         ShowCustomeToast("Login Successfull");
         navigate("/");

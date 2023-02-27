@@ -2,6 +2,9 @@ import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  LOGOUT_REQUEST,
+  LOGOUT_REQUEST_FAILURE,
+  LOGOUT_REQUEST_SUCCESS,
   NEW_SEARCH,
   REGISTER_REQUEST,
   REGISTER_REQUEST_FAILURE,
@@ -36,6 +39,30 @@ export const Reducer = (state, { type, payload }) => {
         user: null,
         isLoading: false,
         error: payload,
+      };
+    }
+    // ! Logout request
+    case LOGOUT_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    }
+    case LOGOUT_REQUEST_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+    }
+
+    case LOGOUT_REQUEST_SUCCESS: {
+      return {
+        ...state,
+        user: null,
+        isLoading: false,
+        error: null,
       };
     }
     //  ! Search Request
