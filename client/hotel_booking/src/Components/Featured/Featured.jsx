@@ -2,29 +2,27 @@ import React from "react";
 import classes from "./Featured.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
 export const Featured = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
     setLoading(true);
-    callApi();
+    getPropertiesCountByCity();
   }, []);
 
-  const callApi = async () => {
-    await fetch(
-      "https://hotel-f7gz.onrender.com/hotels/find/countByCity/?cities=mumbai,delhi,noida",
-      {
-        method: "GET", // or 'PUT'
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setLoading(false);
-        setData(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  //? : Function to get properties count by city
+  const getPropertiesCountByCity = async () => {
+    try {
+      const res = await axios.get(
+        "https://hotel-f7gz.onrender.com/hotels/find/countByCity/?cities=mumbai,delhi,noida"
+      );
+      setData(res.data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
   };
 
   return (

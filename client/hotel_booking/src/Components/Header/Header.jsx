@@ -15,8 +15,8 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { Button } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
+import { NEW_SEARCH } from "../../redux/actionType";
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
@@ -51,7 +51,7 @@ const Header = ({ type }) => {
 
   //? : Function to handle Search
   const handleSearch = () => {
-    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    dispatch({ type: NEW_SEARCH, payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
 

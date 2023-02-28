@@ -96,9 +96,9 @@ export default function Footer() {
           spacing={8}
         >
           <Stack spacing={6}>
-            <Box>
+            {/* <Box>
               <Logo color={useColorModeValue("gray.700", "white")} />
-            </Box>
+            </Box> */}
             <Text fontSize={"sm"}>
               © 2023 Krishan Kumar. All rights reserved
             </Text>

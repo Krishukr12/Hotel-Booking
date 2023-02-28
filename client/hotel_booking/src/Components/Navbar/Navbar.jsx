@@ -12,7 +12,7 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const { ShowCustomeToast } = useCustomToast();
 
-  // ! : Logging out handler with redux
+  //? : Logging out handler with redux
   const handleLogout = async () => {
     const res = await handleLoginOut(dispatch);
     if (res.type === LOGOUT_REQUEST_SUCCESS) {
@@ -28,7 +28,7 @@ export const Navbar = () => {
           <span className={classes.logo}>kissubooking</span>
         </Link>
         {user ? (
-          //? If user is logged in, show the menu
+          //? If user is logged in, show the user name with logout button
           <Menu>
             <MenuButton
               transition="all 0.2s"
@@ -50,7 +50,7 @@ export const Navbar = () => {
             </MenuList>
           </Menu>
         ) : (
-          //? : If user is not logged in
+          //? : If user is not logged in show the login & register buttons
           <div className={classes.navItems}>
             <Link to="/register">
               {" "}
