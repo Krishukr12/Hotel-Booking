@@ -6,13 +6,13 @@ export const PropertyList = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     callApi();
   }, []);
 
   const callApi = async () => {
     await fetch("https://hotel-f7gz.onrender.com/hotels/find/countByType", {
-      method: "GET", // or 'PUT'
+      method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
@@ -34,7 +34,7 @@ export const PropertyList = () => {
   return (
     <div className={classes.pList}>
       {loading ? (
-        "loading"
+        "Loading Please wait..."
       ) : (
         <>
           {data &&
