@@ -28,6 +28,7 @@ export const Navbar = () => {
           <span className={classes.logo}>kissubooking</span>
         </Link>
         {user ? (
+          //? If user is logged in, show the menu
           <Menu>
             <MenuButton
               transition="all 0.2s"
@@ -49,6 +50,7 @@ export const Navbar = () => {
             </MenuList>
           </Menu>
         ) : (
+          //? : If user is not logged in
           <div className={classes.navItems}>
             <Link to="/register">
               {" "}

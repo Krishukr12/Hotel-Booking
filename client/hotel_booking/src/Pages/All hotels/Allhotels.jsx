@@ -8,7 +8,6 @@ import Header from "../../Components/Header/Header";
 import { HotelCard } from "../../Components/Hotel Card/HotelCard";
 import classes from "./Allhotels.module.css";
 import { Button } from "@chakra-ui/react";
-
 export const Allhotels = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -54,7 +53,7 @@ export const Allhotels = () => {
         <div className={classes.listWrapper}>
           <div className={classes.listSearch}>
             <h1 className={classes.lsTitle}>Search</h1>
-            <div className={classes.lsItem}>
+            <div style={{ border: "none" }} className={classes.lsItem}>
               <label>Destination</label>
               <input placeholder={destination} type="text" />
             </div>

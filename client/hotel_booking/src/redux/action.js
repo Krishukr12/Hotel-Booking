@@ -15,7 +15,7 @@ import {
 export const handleRegister = async (credentials, dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
-    const res = await axios.post(
+    await axios.post(
       "https://hotel-f7gz.onrender.com/auth/register",
       credentials
     );

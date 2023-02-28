@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./HotelCard.module.css";
-import { Button } from "@chakra-ui/react";
 export const HotelCard = ({ item }) => {
   return (
     <div className={classes.searchItem}>
@@ -30,13 +29,7 @@ export const HotelCard = ({ item }) => {
           <span className={classes.siPrice}>{item.cheapestPrice} ₹</span>
           <span className={classes.siTaxOp}>Includes taxes and fees</span>
           <Link to={`/hotels/${item._id}`}>
-            <Button
-              colorScheme="teal"
-              variant="outline"
-              className={classes.siCheckButton}
-            >
-              See availability
-            </Button>
+            <button className={classes.siCheckButton}>See availability</button>
           </Link>
         </div>
       </div>

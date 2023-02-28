@@ -12,7 +12,6 @@
   flex-direction: column;
   gap: 10px;
   position: relative;
-
   text-align: left;
 }
 
@@ -84,18 +83,17 @@
 
 .hotelDetailsPrice {
   flex: 1;
-  background-color: #ebf3ff;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-
+  border: 1px solid lightgrey;
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 .hotelDetailsPrice > h1 {
   font-size: 18px;
-  color: #555;
 }
 .hotelDetailsPrice > span {
   font-size: 14px;
@@ -104,15 +102,25 @@
   font-weight: 300;
 }
 .hotelDetailsPrice > button {
-  border: none;
-  padding: 10px 20px;
-  background-color: #0071c2;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
   border-radius: 5px;
+  margin-top: 15px;
+  padding: 0.55rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid #4db5ff;
+  transition: all 400ms ease;
+  background: #4db5ff;
+  color: #1f1f38;
+  height: 2.7rem;
+  border-radius: 10px;
+  float: left;
+  margin-left: 10px;
 }
-
+.hotelDetailsPrice > button:hover {
+  background-color: #ffff;
+  color: #1f1f38;
+  border-color: transparent;
+}
 .slider {
   position: sticky;
   top: 0;

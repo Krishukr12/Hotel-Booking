@@ -5,18 +5,18 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import classes from "./BookingPage.module.css";
+import Reserve from "../../Components/Reserve/Reserve";
 import { useSelector } from "react-redux";
 const BookingPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
@@ -149,10 +149,9 @@ const BookingPage = () => {
                 <p className={classes.hotelDesc}>{data.desc}</p>
               </div>
               <div className={classes.hotelDetailsPrice}>
-                <h1>Perfect for a -night stay!</h1>
                 <h1>Perfect for a {days}-night stay!</h1>
                 <span>
-                  Located in the real heart of Krakow, this property has an
+                  Located in the real heart of India, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
@@ -167,7 +166,7 @@ const BookingPage = () => {
           <Footer />
         </div>
       )}
-      {/* {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />} */}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
