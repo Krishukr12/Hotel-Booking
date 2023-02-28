@@ -1,5 +1,4 @@
 .header {
-  /* background-color: #1a202c; */
   color: white;
   display: flex;
   justify-content: center;
@@ -55,7 +54,6 @@
 
 .headerSearch {
   height: 55px;
-  /* background-color: white; */
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: flex;
   align-items: center;
@@ -95,12 +93,7 @@
   top: 50px;
   z-index: 2;
   color: white;
-  /* border: 1px solid red; */
   display: flex;
-
-  /* background-color: rgb(228, 214, 214); */
-
-  /* background-color: transparent; */
 }
 .date :first-child {
   background-color: #1f1f38;
@@ -191,7 +184,7 @@
     position: absolute;
     left: 7rem;
   }
-  /* ///////////////////////////////////////////// */
+
   .headerListItem {
     display: flex;
     align-items: center;

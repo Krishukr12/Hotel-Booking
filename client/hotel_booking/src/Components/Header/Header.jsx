@@ -7,11 +7,10 @@ import {
   faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { DateRange } from "react-date-range";
 import { useState } from "react";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css"; //? : main css file
+import "react-date-range/dist/theme/default.css"; //?: theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
@@ -23,7 +22,8 @@ const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+
+  //? : Date intial state
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -31,6 +31,8 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
+
+  //? : Option intial state
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
@@ -47,13 +49,13 @@ const Header = ({ type }) => {
     });
   };
 
+  //? : Function to handle Search
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
-  
-  // ? HANDLE CALENDER OPEN AND OPTION 
 
+  //? : Function to handle calendar & options  open and close
   const handleCalenderOpen = () => {
     setOpenOptions(false);
     setOpenDate(!openDate);

@@ -22,7 +22,7 @@ const BookingPage = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-
+  const { user } = useSelector((state) => state);
   useEffect(() => {
     // setLoading(true);
     callApi();
@@ -43,7 +43,7 @@ const BookingPage = () => {
   };
 
   const navigate = useNavigate();
-  const user = "krishan";
+
   const { dates, options } = useSelector((state) => state.searchedInitialState);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;

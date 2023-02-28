@@ -18,7 +18,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const { isLoading, error } = useSelector((state) => state);
   const [credentials, setCredentials] = useState({});
-  //! : input change handler
+  //? : input change handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials((prev) => ({ ...prev, [name]: value }));
@@ -29,11 +29,13 @@ export const Login = () => {
     //? : Check for empty fields
     if (credentials.username && credentials.password) {
       const res = await handleLogin(credentials, dispatch);
+
+      //? : Check for errors
       if (res.type === LOGIN_SUCCESS) {
         localStorage.setItem("user", JSON.stringify(res.payload));
         // ? : Custom hook to show custome toast
         ShowCustomeToast("Login Successfull");
-        navigate("/");
+        navigate(-1);
       }
     } else {
       dispatch({
