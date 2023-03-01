@@ -11,7 +11,6 @@
   position: relative;
   color: white;
   border-radius: 10px;
-  height: 250px;
   flex: 1;
   gap: 20px;
 }
@@ -40,7 +39,12 @@
   padding-top: 10px;
   padding-bottom: 20px;
 }
-
+.sk {
+  height: 40px;
+  width: 99%;
+  margin: 5px 0px 0px 2px;
+  border-radius: 2px;
+}
 /* ...............Media queries(Medium Device)........................ */
 @media screen and (max-width: 1024px) {
 }

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const [data, setData] = useState([]);
-
+  const navigate = useNavigate();
   const getData = async () => {
     try {
       const res = await axios.get(
@@ -24,10 +24,6 @@ const Reserve = ({ setOpen, hotelId }) => {
     getData();
   }, []);
 
-  //   const { data, loading, error } = useFetch(
-  //     `http://localhost:8080/hotels/room/${hotelId}`
-  //   );
-  //   const { dates } = useContext(SearchContext);
   const { dates } = useSelector((state) => state.searchedInitialState);
 
   const getDatesInRange = (startDate, endDate) => {
@@ -47,7 +43,6 @@ const Reserve = ({ setOpen, hotelId }) => {
   };
 
   const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
-
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
       alldates.includes(new Date(date).getTime())
@@ -65,8 +60,6 @@ const Reserve = ({ setOpen, hotelId }) => {
         : selectedRooms.filter((item) => item !== value)
     );
   };
-
-  const navigate = useNavigate();
 
   const handleClick = async () => {
     try {
@@ -103,7 +96,7 @@ const Reserve = ({ setOpen, hotelId }) => {
               <div className={classes.rMax}>
                 Max people: <b>{item.maxPeople}</b>
               </div>
-              <div className={classes.rPrice}>{item.price}</div>
+              <div className={classes.rPrice}>{item.price} ₹</div>
             </div>
             <div className={classes.rSelectRooms}>
               {item.roomNumbers.map((roomNumber) => (

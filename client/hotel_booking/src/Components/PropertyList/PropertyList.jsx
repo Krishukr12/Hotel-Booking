@@ -2,6 +2,7 @@ import { ClassNames } from "@emotion/react";
 import React from "react";
 import classes from "./PropertyList.module.css";
 import { useState, useEffect } from "react";
+import { Skeleton } from "@chakra-ui/react";
 export const PropertyList = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -33,22 +34,18 @@ export const PropertyList = () => {
   ];
   return (
     <div className={classes.pList}>
-      {loading ? (
-        "Loading Please wait..."
-      ) : (
-        <>
-          {data &&
-            images.map((img, i) => (
-              <div className={classes.pListItem} key={i}>
-                <img src={img} alt="" className={classes.pListImg} />
-                <div className={classes.pListTitles}>
-                  <h1>{data[i]?.type}</h1>
-                  <h2>{data[i]?.count}</h2>
-                </div>
-              </div>
-            ))}
-        </>
-      )}
+      {data &&
+        images.map((img, i) => (
+          <div className={classes.pListItem} key={i}>
+            <Skeleton isLoaded={!loading} className={classes.pListImg}>
+              <img src={img} alt="" className={classes.pListImg} />
+            </Skeleton>
+            <div className={classes.pListTitles}>
+              <h1>{data[i]?.type}</h1>
+              <h2>{data[i]?.count}</h2>
+            </div>
+          </div>
+        ))}
     </div>
   );
 };

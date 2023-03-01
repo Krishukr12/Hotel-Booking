@@ -11,7 +11,7 @@ import {
   REGISTER_REQUEST_SUCCESS,
 } from "./actionType";
 
-// ! REGISTER USER HANDLER
+//? : REGISTER USER HANDLER
 export const handleRegister = async (credentials, dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
@@ -31,7 +31,7 @@ export const handleRegister = async (credentials, dispatch) => {
   }
 };
 
-// ! USER LOGIN HANDLER
+//? : USER LOGIN HANDLER
 export const handleLogin = async (credentials, dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
@@ -45,7 +45,7 @@ export const handleLogin = async (credentials, dispatch) => {
   }
 };
 
-// ! USER LOGOUT HANDLER
+//? : USER LOGOUT HANDLER
 
 export const handleLoginOut = async (dispatch) => {
   dispatch({ type: LOGOUT_REQUEST });
