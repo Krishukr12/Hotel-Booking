@@ -35,22 +35,21 @@ export const FeaturedProperties = () => {
     "https://rew-feed-images.global.ssl.fastly.net/trestle_rets_plus/_cloud_media/property/residential/1031758032-1-2da69525c293c454903d70ffbf98eb16-m.jpg",
     "https://www.lushome.com/wp-content/uploads/2013/10/forest-cottages-modern-houses-green-living-25.jpg",
   ];
-
   return (
     <div className={classes.fp}>
-      {data &&
-        data.map((item, index) => (
+      {images &&
+        images.map((item, index) => (
           <Skeleton key={index} className={classes.fpItem} isLoaded={!loading}>
             <div className={classes.fpItem} key={item._id}>
               <img src={images[index]} alt="" className={classes.fpImg} />
-              <span className={classes.fpName}>{item.name}</span>
-              <span className={classes.fpCity}>{item.city}</span>
+              <span className={classes.fpName}>{data[index]?.name}</span>
+              <span className={classes.fpCity}>{data[index]?.city}</span>
               <span className={classes.fpPrice}>
-                Starting from {item.cheapestPrice} ₹
+                Starting from {data[index]?.cheapestPrice} ₹
               </span>
-              {item.rating && (
+              {data[index]?.rating && (
                 <div className={classes.fpRating}>
-                  <button>{item.rating}</button>
+                  <button>{data[index]?.rating}</button>
                   <span>Excellent</span>
                 </div>
               )}
