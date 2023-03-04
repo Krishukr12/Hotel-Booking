@@ -8,6 +8,7 @@ import Header from "../../Components/Header/Header";
 import { HotelCard } from "../../Components/Hotel Card/HotelCard";
 import classes from "./Allhotels.module.css";
 import { Button } from "@chakra-ui/react";
+import Skeleton from "react-loading-skeleton";
 export const Allhotels = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -126,15 +127,8 @@ export const Allhotels = () => {
             <Button onClick={handleClick}>Search</Button>
           </div>
           <div className={classes.listResult}>
-            {loading ? (
-              "loading"
-            ) : (
-              <>
-                {data.map((item) => (
-                  <HotelCard item={item} key={item._id} />
-                ))}
-              </>
-            )}
+            {data &&
+              data.map((item) => <HotelCard item={item} key={item._id} />)}
           </div>
         </div>
       </div>
