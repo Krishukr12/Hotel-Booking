@@ -10,6 +10,7 @@ import { useCustomToast } from "../../hooks/useToast.js";
 export const Navbar = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  //? : Custom Toast hook
   const { ShowCustomeToast } = useCustomToast();
 
   //? : Logging out handler with redux

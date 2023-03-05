@@ -23,6 +23,8 @@ const BookingPage = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const { dates, options } = useSelector((state) => state.searchedInitialState);
+
   const { user } = useSelector((state) => state);
   useEffect(() => {
     setLoading(true);
@@ -42,8 +44,6 @@ const BookingPage = () => {
         console.error("Error:", error);
       });
   };
-
-  const { dates, options } = useSelector((state) => state.searchedInitialState);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
