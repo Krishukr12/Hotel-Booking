@@ -7,8 +7,8 @@ import { Navbar } from "../../Components/Navbar/Navbar";
 import Header from "../../Components/Header/Header";
 import { HotelCard } from "../../Components/Hotel Card/HotelCard";
 import classes from "./Allhotels.module.css";
-import { Button } from "@chakra-ui/react";
-import Skeleton from "react-loading-skeleton";
+import { Button, Spinner } from "@chakra-ui/react";
+
 export const Allhotels = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -19,6 +19,7 @@ export const Allhotels = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  const tempData = new Array(5).fill(0);
   const handleClick = () => {
     alert("clicked");
   };
@@ -127,8 +128,13 @@ export const Allhotels = () => {
             <Button onClick={handleClick}>Search</Button>
           </div>
           <div className={classes.listResult}>
-            {data &&
-              data.map((item) => <HotelCard item={item} key={item._id} />)}
+            {loading
+              ? tempData.map((item, index) => (
+                  <HotelCard loading={loading} key={index} />
+                ))
+              : data.map((item) => (
+                  <HotelCard loading={loading} item={item} key={item._id} />
+                ))}
           </div>
         </div>
       </div>
