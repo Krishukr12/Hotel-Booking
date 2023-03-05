@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./Register.module.css";
-import { Alert, AlertIcon, Button, useToast } from "@chakra-ui/react";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { handleRegister } from "../../redux/action.js";
@@ -8,18 +8,18 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   REGISTER_REQUEST_FAILURE,
   REGISTER_REQUEST_SUCCESS,
-  RESET_LOADING_STATUS,
 } from "../../redux/actionType";
 import { useCustomToast } from "../../hooks/useToast";
 
 export const Register = () => {
   const dispatch = useDispatch();
-  const [credentials, setCredentials] = useState({});
-  const { isLoading, error } = useSelector((state) => state);
-  const { ShowCustomeToast } = useCustomToast();
   const navigate = useNavigate();
+  const [credentials, setCredentials] = useState({});
+  const { register_isLoading } = useSelector((state) => state.loadings);
+  const { register_error_msg } = useSelector((state) => state.errors);
+  const { ShowCustomeToast } = useCustomToast();
 
-  //! : input change handler............
+  //? : input change handler............
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({
@@ -28,9 +28,9 @@ export const Register = () => {
     });
   };
 
-  // ! : Register request handler using redux............
+  //? : Register request handler using redux............
   const handleRegisterRequest = async () => {
-    //? Check for empty fields
+    //? : Check for empty fields
     if (credentials.email && credentials.password && credentials.username) {
       const res = await handleRegister(credentials, dispatch);
       if (res.type === REGISTER_REQUEST_SUCCESS) {
@@ -49,10 +49,7 @@ export const Register = () => {
       });
     }
   };
-  useEffect(() => {
-    //? : To make sure that the loading status is reset when the page is changed
-    dispatch({ type: RESET_LOADING_STATUS });
-  }, []);
+
   return (
     <>
       <Navbar />
@@ -82,15 +79,15 @@ export const Register = () => {
           />
           <div className={classes.submitButton}>
             <button
-              disabled={isLoading}
+              disabled={register_isLoading}
               className={classes.lButton}
               onClick={handleRegisterRequest}
             >
-              {isLoading ? "Loading..." : "Register"}
+              {register_isLoading ? "Loading..." : "Register"}
             </button>
           </div>
 
-          {error && error.message && (
+          {register_error_msg && register_error_msg.message && (
             <Alert
               color={"red"}
               bg={"unset"}
@@ -98,7 +95,7 @@ export const Register = () => {
               status="error"
             >
               <AlertIcon />
-              {error.message}
+              {register_error_msg.message}
             </Alert>
           )}
         </div>
