@@ -14,7 +14,7 @@ import {
 
 export const Reducer = (state, { type, payload }) => {
   switch (type) {
-    //  ! User Login
+    //? : User Login
     case LOGIN_REQUEST: {
       return {
         ...state,
@@ -52,7 +52,7 @@ export const Reducer = (state, { type, payload }) => {
         user: null,
       };
     }
-    // ! Logout request
+    //? : Logout request
     case LOGOUT_REQUEST: {
       return {
         ...state,
@@ -73,7 +73,7 @@ export const Reducer = (state, { type, payload }) => {
         error: null,
       };
     }
-    //  ! Search Request
+    //? : Search Request
     case NEW_SEARCH: {
       return {
         ...state,
@@ -95,7 +95,7 @@ export const Reducer = (state, { type, payload }) => {
         },
       };
     }
-    //  ! User Registration
+    //? : User Registration
 
     case REGISTER_REQUEST: {
       return {
@@ -131,7 +131,7 @@ export const Reducer = (state, { type, payload }) => {
       };
     }
 
-    // ! Default state
+    //? : Default state
 
     default: {
       return state;
