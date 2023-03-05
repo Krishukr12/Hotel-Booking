@@ -6,6 +6,7 @@ import {
 import thunk from "redux-thunk";
 import { Reducer } from "./reducer";
 const intialState = {
+  user: JSON.parse(localStorage.getItem("user")) || null,
   loadings: {
     login_isLoading: false,
     register_isLoading: false,
@@ -14,8 +15,6 @@ const intialState = {
     register_error_msg: null,
     login_error_msg: null,
   },
-  user: JSON.parse(localStorage.getItem("user")) || null,
-  error: null,
   searchedInitialState: {
     city: undefined,
     dates: [],

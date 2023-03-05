@@ -1,4 +1,4 @@
-import { ClassNames } from "@emotion/react";
+
 import React from "react";
 import classes from "./PropertyList.module.css";
 import { useState, useEffect } from "react";
