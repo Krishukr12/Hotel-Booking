@@ -13,6 +13,7 @@ import Footer from "../../Components/Footer/Footer";
 import classes from "./BookingPage.module.css";
 import Reserve from "../../Components/Reserve/Reserve";
 import { useSelector } from "react-redux";
+import { Skeleton } from "@chakra-ui/react";
 const BookingPage = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
@@ -109,57 +110,58 @@ const BookingPage = () => {
             />
           </div>
         )}
-        <div className={classes.hotelWrapper}>
-          <h1 className={classes.hotelTitle}>{data.name}</h1>
+        <Skeleton className={classes.hotelWrapper} isLoaded={!loading}>
+          <div className={classes.hotelWrapper}>
+            <h1 className={classes.hotelTitle}>{data.name}</h1>
 
-          <div className={classes.hotelAddress}>
-            <FontAwesomeIcon
-              className={classes.locationIcon}
-              icon={faLocationDot}
-            />
-            <span>{data.address}</span>
-          </div>
+            <div className={classes.hotelAddress}>
+              <FontAwesomeIcon
+                className={classes.locationIcon}
+                icon={faLocationDot}
+              />
+              <span>{data.address}</span>
+            </div>
 
-          <span className={classes.hotelDistance}>
-            Excellent location – {data.distance} from center
-          </span>
-          <span className={classes.hotelPriceHighlight}>
-            Book a stay over {data.cheapestPrice} ₹ at this property and get a
-            free airport taxi
-          </span>
-          <div className={classes.hotelImages}>
-            {data.photos?.map((photo, i) => (
-              <div className={classes.hotelImgWrapper} key={i}>
-                <img
-                  onClick={() => handleOpen(i)}
-                  src={photo}
-                  alt=""
-                  className={classes.hotelImg}
-                />
+            <span className={classes.hotelDistance}>
+              Excellent location – {data.distance} from center
+            </span>
+            <span className={classes.hotelPriceHighlight}>
+              Book a stay over {data.cheapestPrice} ₹ at this property and get a
+              free airport taxi
+            </span>
+            <div className={classes.hotelImages}>
+              {data.photos?.map((photo, i) => (
+                <div className={classes.hotelImgWrapper} key={i}>
+                  <img
+                    onClick={() => handleOpen(i)}
+                    src={photo}
+                    alt=""
+                    className={classes.hotelImg}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className={classes.hotelDetails}>
+              <div className={classes.hotelDetailsTexts}>
+                <h1 className={classes.hotelTitle}>{data.title}</h1>
+                <p className={classes.hotelDesc}>{data.desc}</p>
               </div>
-            ))}
-          </div>
-
-          <div className={classes.hotelDetails}>
-            <div className={classes.hotelDetailsTexts}>
-              <h1 className={classes.hotelTitle}>{data.title}</h1>
-              <p className={classes.hotelDesc}>{data.desc}</p>
-            </div>
-            <div className={classes.hotelDetailsPrice}>
-              <h1>Perfect for a {days}-night stay!</h1>
-              <span>
-                Located in the real heart of India, this property has an
-                excellent location score of 9.8!
-              </span>
-              <h2>
-                <b>{days * data.cheapestPrice * options.room} ₹</b> ({days}{" "}
-                nights)
-              </h2>
-              <button onClick={handleClick}>Reserve or Book Now!</button>
+              <div className={classes.hotelDetailsPrice}>
+                <h1>Perfect for a {days}-night stay!</h1>
+                <span>
+                  Located in the real heart of India, this property has an
+                  excellent location score of 9.8!
+                </span>
+                <h2>
+                  <b>{days * data.cheapestPrice * options.room} ₹</b> ({days}{" "}
+                  nights)
+                </h2>
+                <button onClick={handleClick}>Reserve or Book Now!</button>
+              </div>
             </div>
           </div>
-        </div>
-
+        </Skeleton>
         <Footer />
       </div>
       {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
