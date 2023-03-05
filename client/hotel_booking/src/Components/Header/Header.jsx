@@ -55,7 +55,7 @@ const Header = ({ type }) => {
     navigate("/hotels", { state: { destination, dates, options } });
   };
 
-  //? : Function to handle calendar & options  open and close
+  //? : Function to handle calendar and options  open & close
   const handleCalenderOpen = () => {
     setOpenOptions(false);
     setOpenDate(!openDate);
