@@ -9,6 +9,11 @@ export const Featured = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const city = ["delhi", "mumbai", "noida"];
+  const cityImgs = [
+    "https://media-cdn.tripadvisor.com/media/photo-s/23/b5/5f/31/facade.jpg",
+    "https://theluxuryeditor.com/wp-content/uploads/2019/02/178793622.jpg",
+    "https://cdn1.goibibo.com/voy_ing/t_g/a918a09c291e11e5b5850022195573b9.jfif",
+  ];
   useEffect(() => {
     setLoading(true);
     getPropertiesCountByCity(city);
@@ -35,7 +40,7 @@ export const Featured = () => {
           <div className={classes.featuredItem}>
             <Skeleton className={classes.featuredImg} isLoaded={!loading}>
               <img
-                src="https://media.istockphoto.com/id/539018660/photo/taj-mahal-hotel-and-gateway-of-india.jpg?s=612x612&w=0&k=20&c=L1LJVrYMS8kj2rJKlQMcUR88vYoAZeWbYIGkcTo6QV0="
+                src={cityImgs[index]}
                 alt="Mumbai"
                 className={classes.featuredImg}
               />
