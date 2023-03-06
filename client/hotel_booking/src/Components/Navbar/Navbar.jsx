@@ -14,11 +14,15 @@ export const Navbar = () => {
   //? : Custom Toast hook
   const { ShowCustomeToast } = useCustomToast();
 
-  //? : Logging out handler with redux
+  // ! : Define a function to handle logging out
   const handleLogout = async () => {
+    //* : Call the handleLoginOut function and wait for it to complete
     const res = await handleLoginOut(dispatch);
+    //* : If the logout request was successful
     if (res.type === LOGOUT_REQUEST_SUCCESS) {
+      //* : Remove the user data from local storage
       localStorage.removeItem("user");
+      //* : Show a custom toast message to indicate that the logout was successful
       ShowCustomeToast("Logout Success");
     }
   };
