@@ -7,16 +7,24 @@ import {
   faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { DateRange } from "react-date-range";
 import { useState } from "react";
-import "react-date-range/dist/styles.css"; //? : main css file
-import "react-date-range/dist/theme/default.css"; //?: theme css file
+
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+
 import { format } from "date-fns";
+
 import { useNavigate } from "react-router-dom";
+
 import "./header.css";
+
 import { Button } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
+
 import { NEW_SEARCH } from "../../redux/actionType";
+
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);

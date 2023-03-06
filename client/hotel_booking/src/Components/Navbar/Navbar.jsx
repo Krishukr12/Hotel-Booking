@@ -8,10 +8,13 @@ import { LOGOUT_REQUEST_SUCCESS } from "../../redux/actionType";
 import { useCustomToast } from "../../hooks/useToast.js";
 
 export const Navbar = () => {
+  //* Create a dispatch function to dispatch actions to the store
   const dispatch = useDispatch();
+
+  //* Select the user property from the store's state
   const user = useSelector((state) => state.user);
 
-  //? : Custom Toast hook
+  //* Use the useCustomToast hook to get a reference to the ShowCustomToast function
   const { ShowCustomeToast } = useCustomToast();
 
   // ! : Define a function to handle logging out
