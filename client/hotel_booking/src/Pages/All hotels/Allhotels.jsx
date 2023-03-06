@@ -128,13 +128,18 @@ export const Allhotels = () => {
             <Button onClick={handleClick}>Search</Button>
           </div>
           <div className={classes.listResult}>
-            {loading
-              ? tempData.map((item, index) => (
-                  <HotelCard loading={loading} key={index} />
-                ))
-              : data.map((item) => (
-                  <HotelCard loading={loading} item={item} key={item._id} />
-                ))}
+            {loading ? (
+              tempData.map((item, index) => (
+                <HotelCard loading={loading} key={index} />
+              ))
+            ) : //? : To handle when user haven't enter the destination
+            data.length > 0 ? (
+              data.map((item) => (
+                <HotelCard loading={loading} item={item} key={item._id} />
+              ))
+            ) : (
+              <h1>Not valid city</h1>
+            )}
           </div>
         </div>
       </div>

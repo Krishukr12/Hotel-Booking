@@ -37,7 +37,7 @@ export const Featured = () => {
     <div className={classes.featured}>
       <>
         {city.map((item, index) => (
-          <div className={classes.featuredItem}>
+          <div key={index} className={classes.featuredItem}>
             <Skeleton className={classes.featuredImg} isLoaded={!loading}>
               <img
                 src={cityImgs[index]}
