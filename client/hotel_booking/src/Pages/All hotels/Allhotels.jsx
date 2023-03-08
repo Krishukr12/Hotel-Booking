@@ -25,10 +25,10 @@ export const Allhotels = () => {
   };
   useEffect(() => {
     setLoading(true);
-    callApi();
+    fetchData();
   }, []);
 
-  const callApi = async () => {
+  const fetchData = async () => {
     await fetch(
       `https://hotel-f7gz.onrender.com/hotels?city=${destination}&min=${
         min || 0
