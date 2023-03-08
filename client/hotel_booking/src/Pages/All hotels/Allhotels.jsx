@@ -138,7 +138,10 @@ export const Allhotels = () => {
                 <HotelCard loading={loading} item={item} key={item._id} />
               ))
             ) : (
-              <h1>Not valid city</h1>
+              <h1>
+                Sorry ! we're not available in your city currently OR Enter a
+                valid city
+              </h1>
             )}
           </div>
         </div>
